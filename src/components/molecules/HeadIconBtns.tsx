@@ -19,7 +19,7 @@ const HeadIconBtns: FC<Props> = ({ uid }: Props) => {
       {uid && (
         <IconBtn
           icon={"History"}
-          onClick={() => router.push("/orderhistory")}
+          onClick={() => router.push("/history")}
         />
       )}
       {uid ? (

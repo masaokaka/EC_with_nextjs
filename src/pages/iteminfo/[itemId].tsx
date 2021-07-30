@@ -32,16 +32,10 @@ import {
 } from "../../store/features/cart/cartSlice";
 import Topping from "../../models/topping";
 import Item from "../../models/item";
-import { connectDB } from "../../helpers/db_utils";
-import {
-  GetStaticPaths,
-  GetStaticProps,
-  GetStaticPropsContext,
-  GetStaticPropsResult,
-} from "next";
+import connectDB from "../../config/mongoDB";
+import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
 import { ONE_MINUTE } from "../../static/const";
 import Head from "next/head";
-import { ParsedUrlQuery } from "querystring";
 
 interface Props {
   item: string; //商品一個
@@ -69,7 +63,7 @@ const ItemInfo: FC<Props> = (props) => {
   }, [router]);
 
   useEffect(() => {
-    if (item !== undefined) {
+    if (item !== undefined && items.length !== 0) {
       let total: number = calcTotal(
         items,
         item._id!,
@@ -78,6 +72,9 @@ const ItemInfo: FC<Props> = (props) => {
         addedToppings
       );
       setTotalPrice(total);
+    } else {
+      //SSGで計算が走った時に、合計金額は一旦０円で表示する。
+      setTotalPrice(0);
     }
   }, [item, addedToppings, itemSize, itemNum, items]);
 
@@ -135,15 +132,12 @@ const ItemInfo: FC<Props> = (props) => {
       }
     }
   };
+
   return (
     <Fragment>
       <Head>
-        <title>ラクラクカリー【】</title>
-        <meta
-          name="description"
-          content="ラクラク社が販売するカレーをネットから簡単に注文できるWEBサイトです。
-          トップページではラクラク社のシェフが手がけた美味しいカレーを選択して注文することができます。"
-        />
+        <title>ラクラクカリー【{item.name}】</title>
+        <meta name="description" content={item.text} />
       </Head>
       <Container>
         <h2>商品詳細</h2>
@@ -181,9 +175,10 @@ const ItemInfo: FC<Props> = (props) => {
 export const getStaticProps: GetStaticProps<Props> = async (
   context: GetStaticPropsContext
 ) => {
+  console.log("iteminfo build");
   const { params } = context;
   const itemId = params!.itemId;
-  let item = {};
+  let item: ItemType = {};
   let toppings = [];
   try {
     await connectDB();

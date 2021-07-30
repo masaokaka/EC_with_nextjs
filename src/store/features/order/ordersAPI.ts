@@ -1,11 +1,11 @@
 import { OrderType } from "./ordersSlice";
 import axios, { AxiosResponse } from "axios";
-import { API_PATH, ORDERS_COLLECTION_PATH } from "../../../config/mongoDB";
+import { ORDERS_COLLECTION_PATH } from "../../../config/mongoDB/config";
 
 //オーダー更新処理
 export const update_order = (order: OrderType): Promise<OrderType> =>
   axios
-    .post(`${API_PATH + ORDERS_COLLECTION_PATH}/update-order-all`, { order })
+    .post(`/api${ORDERS_COLLECTION_PATH}/update-order-all`, { order })
     .then((res: AxiosResponse<OrderType>) => {
       return res.data;
     })
@@ -19,7 +19,7 @@ export const update_order_status = (
   _id: string
 ): Promise<OrderType> =>
   axios
-    .post(`${API_PATH + ORDERS_COLLECTION_PATH}/update-order-status`, {
+    .post(`/api${ORDERS_COLLECTION_PATH}/update-order-status`, {
       status,
       _id,
     })
@@ -33,7 +33,7 @@ export const update_order_status = (
 //ユーザーの注文履歴を全件取得取得
 export const fetch_all_orders_of_user = (uid: string): Promise<OrderType[]> =>
   axios
-    .post(`${API_PATH + ORDERS_COLLECTION_PATH}/fetch-all-orders-of-user`, {
+    .post(`/api${ORDERS_COLLECTION_PATH}/fetch-all-orders-of-user`, {
       uid,
     })
     .then((res: AxiosResponse<OrderType[]>) => {

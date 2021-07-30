@@ -139,6 +139,7 @@ export const userinfoSlice = createSlice({
     builder.addCase(getUserinfoAsync.rejected, (state, action) => {
       state.status = "failed";
       if (action.payload) {
+        console.log(action.payload.errorMsg);
         state.errorMsg = action.payload.errorMsg;
       }
     });

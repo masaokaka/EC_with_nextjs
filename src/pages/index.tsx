@@ -7,7 +7,8 @@ import { Items, SearchForm } from "../components/molecules";
 import { selectItems, ItemType } from "../store/features/item/itemsSlice";
 import { fetch_all_items } from "../store/features/item/itemsAPI";
 import Item from "../models/item";
-import { connectDB, disconnectDB } from "../helpers/db_utils";
+// import { connectDB, disconnectDB } from "../helpers/db_utils";
+import connectDB from "../config/mongoDB";
 import { GetStaticProps } from "next";
 import { ONE_MINUTE } from "../static/const";
 
@@ -15,11 +16,9 @@ interface Props {
   items: string;
 }
 const Home: FC<Props> = (props) => {
-  // const itemsa = useAppSelector(selectItems);
   const items: ItemType[] = JSON.parse(props.items);
   const [searchItems, setSearchItems] = useState<ItemType[]>(items);
   const [noItem, setNoItem] = useState(false);
-  console.log(items);
   const search = (word: string | undefined) => {
     if (word === "" || word === undefined) {
       setSearchItems(items);
@@ -59,9 +58,10 @@ const Home: FC<Props> = (props) => {
 export const getStaticProps: GetStaticProps<Props> = async () => {
   let items: any = [];
   try {
+    console.log("toppage build");
     await connectDB();
     items = await Item.find({});
-    await disconnectDB();
+    // await disconnectDB();
   } catch (error) {
     console.log(error.message);
   }

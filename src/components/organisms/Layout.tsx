@@ -30,6 +30,7 @@ import { ADMIN_ID } from "../../static/admin";
 import {
   getAllUsersAsync,
   selectUserInfosStatus,
+  unsetUserInfos,
 } from "../../store/features/userinfos/userinfosSlice";
 
 const Layout: FC = (props) => {
@@ -41,17 +42,19 @@ const Layout: FC = (props) => {
   const userinfosStatus = useAppSelector(selectUserInfosStatus);
   const cartStatus = useAppSelector(selectCartStatus);
 
+  //同じタイミングでmongoDBのセッションにアクセスするとエラーが出る。未解決
   //Layoutで全てのコンポーネントをラップするので、ここでデータの取得はやってしまう。
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
         let uid = user.uid;
+        console.log(uid);
         dispatch(getUserinfoAsync({ uid }));
-        dispatch(fetchCartAsync({ uid }));
-        dispatch(fetchOrdersAsync({ uid }));
-        if (uid === ADMIN_ID) dispatch(getAllUsersAsync());
+        // dispatch(fetchCartAsync({ uid }));
+        // dispatch(fetchOrdersAsync({ uid }));
       } else {
         dispatch(unsetUser());
+        dispatch(unsetUserInfos());
         dispatch(unsetCart());
         dispatch(unsetOrders());
       }
@@ -65,6 +68,7 @@ const Layout: FC = (props) => {
       <Header />
       <Sidenav />
       {/* エラーメッセージのコンポーネント */}
+      {/* インフォメーションのコンポーネント */}
       <main>
         <Inner>{props.children}</Inner>
       </main>

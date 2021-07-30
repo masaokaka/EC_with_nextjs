@@ -1,6 +1,6 @@
 import { CartItemType, CartType } from "./cartSlice";
 import axios from "axios";
-import { API_PATH, ORDERS_COLLECTION_PATH } from "../../../config/mongoDB";
+import { ORDERS_COLLECTION_PATH } from "../../../config/mongoDB/config";
 
 //カートの商品を更新(追加、削除)
 export const update_item_of_cart = (
@@ -8,7 +8,7 @@ export const update_item_of_cart = (
   uid: string
 ): Promise<CartType> =>
   axios
-    .post(`${API_PATH + ORDERS_COLLECTION_PATH}/update-item-of-cart`, {
+    .post(`/api${ORDERS_COLLECTION_PATH}/update-item-of-cart`, {
       itemInfo,
       uid,
     })
@@ -22,7 +22,7 @@ export const update_item_of_cart = (
 //カートの新規作成
 export const create_cart = (cart: CartType): Promise<CartType> =>
   axios
-    .post(`${API_PATH + ORDERS_COLLECTION_PATH}/create-cart`, { cart })
+    .post(`/api${ORDERS_COLLECTION_PATH}/create-cart`, { cart })
     .then((res) => {
       return res.data;
     })
@@ -33,7 +33,7 @@ export const create_cart = (cart: CartType): Promise<CartType> =>
 //カートの取得
 export const fetch_cart = (uid: string): Promise<CartType> =>
   axios
-    .post(`${API_PATH + ORDERS_COLLECTION_PATH}/fetch-cart`, { uid })
+    .post(`/api${ORDERS_COLLECTION_PATH}/fetch-cart`, { uid })
     .then((res) => {
       return res.data;
     })

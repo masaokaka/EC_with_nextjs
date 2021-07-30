@@ -45,8 +45,8 @@ export const fetchAllItemsAsync = createAsyncThunk<
   try {
     const items = await fetch_all_items();
     return items;
-  } catch (error) {
-    return rejectWithValue({ errorMsg: error });
+  } catch (e) {
+    return rejectWithValue({ errorMsg: e.message });
   }
 });
 

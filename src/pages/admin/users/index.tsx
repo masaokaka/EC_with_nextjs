@@ -1,14 +1,24 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import { Container } from "@material-ui/core";
-import { useAppSelector } from "../../../store/app/hooks";
-import { selectUserInfos } from "../../../store/features/userinfos/userinfosSlice";
+import { useAppSelector, useAppDispatch } from "../../../store/app/hooks";
+import {
+  selectUserInfos,
+  getAllUsersAsync,
+} from "../../../store/features/userinfos/userinfosSlice";
 import {
   AdminUsersTable,
   AdminHeaderBtns,
 } from "../../../components/organisms";
+import { ADMIN_ID } from "../../../static/admin";
+import { selectUid } from "../../../store/features/userinfo/userinfoSlice";
 
-const UserList: FC = () => {
+const Users: FC = () => {
+  const dispatch = useAppDispatch();
   const userInfos = useAppSelector(selectUserInfos);
+  const uid = useAppSelector(selectUid);
+  useEffect(() => {
+    if (uid === ADMIN_ID) dispatch(getAllUsersAsync());
+  }, [dispatch, ADMIN_ID, uid]);
   return (
     <Container>
       <AdminHeaderBtns />
@@ -18,4 +28,4 @@ const UserList: FC = () => {
   );
 };
 
-export default UserList;
+export default Users;

@@ -1,5 +1,5 @@
 import { ItemType } from "./itemsSlice";
-import { ITEMS_COLLECTION_PATH } from "../../../config/mongoDB";
+import { ITEMS_COLLECTION_PATH } from "../../../config/mongoDB/config";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 //アイテムの取得
@@ -11,8 +11,10 @@ export const fetch_all_items = (): Promise<ItemType[]> =>
     })
     .catch((e: AxiosError<{ message: string }>) => {
       if (e.response) {
+        console.log(e.response.data.message);
         throw new Error(e.response.data.message);
       } else {
+        console.log(e.message);
         throw new Error(e.message);
       }
     });
@@ -45,7 +47,7 @@ export const save_img_to_aws_s3 = (url: string, img: File): Promise<void> =>
 
 export const add_item_to_db = (item: ItemType): Promise<ItemType> =>
   axios
-    .post(`/api${ITEMS_COLLECTION_PATH}/add-item`, item)
+    .post(`/api${ITEMS_COLLECTION_PATH}/add`, item)
     .then((res: AxiosResponse<ItemType>) => {
       return res.data;
     })
@@ -60,7 +62,7 @@ export const add_item_to_db = (item: ItemType): Promise<ItemType> =>
 //商品削除
 export const delete_item_from_db = (_id: string): Promise<void> =>
   axios
-    .post(`/api${ITEMS_COLLECTION_PATH}/delete-item`, { _id })
+    .post(`/api${ITEMS_COLLECTION_PATH}/delete`, { _id })
     .then((res: AxiosResponse<any>) => {
       console.log(res.data.deletedItem);
       return;

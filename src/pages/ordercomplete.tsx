@@ -1,25 +1,25 @@
-import { useHistory } from "react-router-dom";
+import { useRouter } from "next/router";
 import { FC, useEffect } from "react";
-import { Btn } from "../atoms";
-import { ORDER_COMP_TOKEN } from "../../static/const";
+import { Btn } from "../components/atoms";
+import { ORDER_COMP_TOKEN } from "../static/const";
 
 const OrderComp: FC = () => {
-  const history = useHistory();
+  const router = useRouter();
   useEffect(() => {
     let token: string | null = localStorage.getItem("token-order-complete");
     if (token) {
       if (token === ORDER_COMP_TOKEN) {
         return;
       } else {
-        history.push("/");
+        router.push("/");
       }
     } else {
-      history.push("/");
+      router.push("/");
     }
     return () => {
       localStorage.removeItem("token-order-complete");
     };
-  }, [history]);
+  }, [router]);
   return (
     <div style={{ textAlign: "center" }}>
       <h2>注文が完了しました！</h2>
@@ -30,7 +30,7 @@ const OrderComp: FC = () => {
       <Btn
         text="トップ画面に戻る"
         onClick={() => {
-          history.push("/");
+          router.push("/");
         }}
       />
     </div>

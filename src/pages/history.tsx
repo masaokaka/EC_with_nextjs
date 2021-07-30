@@ -1,33 +1,30 @@
-import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { useAppSelector, useAppDispatch } from "../store/app/hooks";
 import { FC, useEffect } from "react";
-import { useHistory } from "react-router";
-import { OrderItemsTable } from "../organisms";
+import { OrderItemsTable } from "../components/organisms";
 import { Container } from "@material-ui/core";
-import { selectOrders } from "../../features/order/ordersSlice";
-import { selectUid } from "../../features/userinfo/userinfoSlice";
-import { selectItems } from "../../features/item/itemsSlice";
-import { selectToppings } from "../../features/topping/toppingsSlice";
-import { fetchOrdersAsync } from "../../features/order/ordersSlice";
+import { selectOrders } from "../store/features/order/ordersSlice";
+import { selectUid } from "../store/features/userinfo/userinfoSlice";
+import { selectItems } from "../store/features/item/itemsSlice";
+import { selectToppings } from "../store/features/topping/toppingsSlice";
+import { fetchOrdersAsync } from "../store/features/order/ordersSlice";
+import { useRouter } from "next/router";
 
 const OrderHistory: FC = () => {
   const dispatch = useAppDispatch();
-  const history = useHistory();
+  const router = useRouter();
   const uid = useAppSelector(selectUid);
   const items = useAppSelector(selectItems);
   const toppings = useAppSelector(selectToppings);
   const orders = useAppSelector(selectOrders);
 
   useEffect(() => {
-    dispatch(fetchOrdersAsync({ uid: uid! }));
-  }, [dispatch, uid]);
-
-  useEffect(() => {
     if (uid) {
+      dispatch(fetchOrdersAsync({ uid: uid }));
       return;
     } else {
-      history.push("/");
+      router.push("/");
     }
-  }, [uid, history]);
+  }, [uid, router, dispatch]);
 
   return (
     <Container>

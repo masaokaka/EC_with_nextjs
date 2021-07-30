@@ -20,7 +20,7 @@ export const calcTotal = (
   itemSize: number,
   itemNum: number,
   addedToppings: CartTopType[]
-) => {
+): number => {
   let total = 0;
   let index = items.findIndex((it) => {
     return it._id === itemId;
@@ -44,8 +44,8 @@ export const calcTotal = (
 };
 
 //住所検索API
-export const searchAddress = (value: string) => {
-  return axios
+export const searchAddress = (value: string): Promise<string> =>
+  axios
     .get(`https://api.zipaddress.net/?zipcode=${value}`)
     .then((res) => {
       return String(res.data.data.fullAddress);
@@ -53,7 +53,6 @@ export const searchAddress = (value: string) => {
     .catch(() => {
       return "取得に失敗しました。";
     });
-};
 
 //配達日時のバリデーション
 export const validateOrderDate = (selected: string) => {

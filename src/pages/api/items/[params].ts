@@ -1,8 +1,10 @@
-import type { NextApiRequest, NextApiResponse } from "next";
+import { NextApiRequest, NextApiResponse } from "next";
 import mongoose from "mongoose";
 import { generateUploadUrl } from "../../../config/aws_s3"; //s3.jsファイルの読み込み
 import Item from "../../../models/item";
-import { connectDB, disconnectDB } from "../../../helpers/db_utils";
+// import { connectDB, disconnectDB } from "../../../helpers/db_utils";
+import connectDB from "../../../config/mongoDB";
+import { ItemType } from "../../../store/features/item/itemsSlice";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const params: string | string[] = req.query.params;
@@ -22,64 +24,57 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       try {
         const items = await Item.find({});
         console.log("fetching items data success");
-        res.status(201).send(items);
+        res.status(200).send(items);
       } catch (error) {
         console.log(`fetching items data failed. Error:${error.message}`);
         res.status(500).send({ message: "商品情報の取得に失敗しました。" });
+      }
+    } else if (params === "get-s3-url") {
+      try {
+        const url: string = await generateUploadUrl();
+        res.status(200).send({ url });
+      } catch (error) {
+        console.log(`fetching AWS S3 URL failed. Error:${error.message}`);
+        res.status(500).send({ message: "商品情報の追加に失敗しました。" });
       }
     }
   }
   //POSTメソッドでのアクセスを処理
   if (method === "POST") {
+    if (params === "add") {
+      try {
+        const new_item: ItemType = {
+          ...req.body,
+          _id: mongoose.Types.ObjectId(),
+        };
+        const newItem = new Item(new_item);
+        const response_item: ItemType = await newItem.save();
+        console.log("saving item data success");
+        res.status(200).send(response_item);
+      } catch (error) {
+        console.log(`saving item data failed. Error:${error.message}`);
+        res.status(500).send({ message: "商品情報の追加に失敗しました。" });
+      }
+    } else if (params === "delete") {
+      try {
+        const _id: string = req.body._id;
+        await Item.findByIdAndDelete(_id);
+        console.log("deleting item data success");
+        res.status(200).end();
+      } catch (error) {
+        console.log(`deleting topping data failed. Error:${error.message}`);
+        res
+          .status(500)
+          .send({ message: "トッピング情報の削除に失敗しました。" });
+      }
+    }
   }
   //全ての処理が抜けた後、disconnectする※重要※
-  try {
-    disconnectDB();
-  } catch (error) {
-    res.status(500).send({ message: "データベースの切断に失敗しました。" });
-  }
-
-  // mongoose.connection
-  //   .close()
-  //   .then(() => console.log("db disconnection success"))
-  //   .catch((error) =>
-  //     console.log(`db connection failed. Error:${error.message}`)
-  //   );
+  // try {
+  //   await disconnectDB();
+  // } catch (error) {
+  //   res.status(500).send({ message: "データベースの切断に失敗しました。" });
+  // }
 }
-// //商品取得処理
-// router.get("/fetch-all-items", (req: NextApiRequest, res:NextApiResponse) => {
-//   Item.find({}).then((items) => {
-//     console.log(items);
-//     res.send(items);
-//   });
-// });
-
-// //画像ファイル登録用の一時的なURLをAWS S3から取得
-// router.get("/get-s3-url", async (req: NextApiRequest, res: NextApiResponse) => {
-//   const url = await generateUploadUrl();
-//   res.send({ url });
-// });
-// //商品追加処理
-// router.post("/add-item", (req: NextApiRequest, res: NextApiResponse) => {
-//   console.log(req.body);
-//   const new_item = {
-//     ...req.body,
-//     _id: mongoose.Types.ObjectId(),
-//   };
-//   const newItem = new Item(new_item);
-//   newItem.save().then((item) => {
-//     console.log(item);
-//     res.send(item);
-//   });
-// });
-
-// //商品削除処理
-// router.post("/delete-item", (req: NextApiRequest, res: NextApiResponse) => {
-//   console.log(req.body._id);
-//   const _id = req.body._id;
-//   Item.findByIdAndDelete(_id).then((deletedItem) => {
-//     res.send({ deletedItem });
-//   });
-// });
 
 export default handler;
