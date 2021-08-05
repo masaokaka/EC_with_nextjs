@@ -1,4 +1,4 @@
-import { ItemType } from "../../store/features/item/itemsSlice";
+import { ItemType } from "../../features/item/itemsSlice";
 import { SIZE_L_STATUS, SIZE_M_STATUS } from "../../static/const";
 import {
   createRandomId,

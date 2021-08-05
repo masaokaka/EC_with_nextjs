@@ -1,8 +1,8 @@
-import { auth, sessionPersistance } from "../../../config/firebase";
+import { auth, sessionPersistance } from "../../config/firebase";
 import { UserInfoType } from "./userinfoSlice";
-import { UserCredential } from "../../../config/firebase";
+import { UserCredential } from "../../config/firebase";
 import axios, { AxiosResponse, AxiosError } from "axios";
-import { USERINFOS_COLLECTION_PATH } from "../../../config/mongoDB/config";
+import { USERINFOS_COLLECTION_PATH } from "../../config/mongoDB/config";
 // //ログイン
 export const login_to_firebase = (
   email: string,

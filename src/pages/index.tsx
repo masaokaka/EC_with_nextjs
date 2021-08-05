@@ -2,20 +2,20 @@ import Head from "next/head";
 import Image from "next/image";
 import { FC, useState, useEffect } from "react";
 import { Box } from "@material-ui/core";
-import { useAppSelector } from "../store/app/hooks";
+import { useAppSelector } from "../app/hooks";
 import { Items, SearchForm } from "../components/molecules";
-import { selectItems, ItemType } from "../store/features/item/itemsSlice";
-import { fetch_all_items } from "../store/features/item/itemsAPI";
+import { selectItems, ItemType } from "../features/item/itemsSlice";
+import { fetch_all_items } from "../features/item/itemsAPI";
 import Item from "../models/item";
 // import { connectDB, disconnectDB } from "../helpers/db_utils";
 import connectDB from "../config/mongoDB";
-import { GetStaticProps } from "next";
+import { GetStaticProps,NextPage } from "next";
 import { ONE_MINUTE } from "../static/const";
 
 interface Props {
   items: string;
 }
-const Home: FC<Props> = (props) => {
+const Home: NextPage<Props> = (props) => {
   const items: ItemType[] = JSON.parse(props.items);
   const [searchItems, setSearchItems] = useState<ItemType[]>(items);
   const [noItem, setNoItem] = useState(false);
@@ -38,7 +38,10 @@ const Home: FC<Props> = (props) => {
   return (
     <div className="center">
       <Head>
-        <title>ラクラクカリー【トップ】</title>
+        <title>
+          ラクラクカリー | ラクラク社シェフのカレーをすぐにお届け！ | raku raku
+          curry
+        </title>
         <meta
           name="description"
           content="ラクラク社が販売するカレーをネットから簡単に注文できるWEBサイトです。

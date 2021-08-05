@@ -1,6 +1,6 @@
 import { FC } from "react";
-import { CartTopType } from "../../store/features/cart/cartSlice";
-import { ToppingType } from "../../store/features/topping/toppingsSlice";
+import { CartTopType } from "../../features/cart/cartSlice";
+import { ToppingType } from "../../features/topping/toppingsSlice";
 interface Props {
   toppings: ToppingType[];
   cartTopping: CartTopType;

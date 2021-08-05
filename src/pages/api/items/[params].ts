@@ -4,7 +4,7 @@ import { generateUploadUrl } from "../../../config/aws_s3"; //s3.jsファイル�
 import Item from "../../../models/item";
 // import { connectDB, disconnectDB } from "../../../helpers/db_utils";
 import connectDB from "../../../config/mongoDB";
-import { ItemType } from "../../../store/features/item/itemsSlice";
+import { ItemType } from "../../../features/item/itemsSlice";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const params: string | string[] = req.query.params;
@@ -69,12 +69,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       }
     }
   }
-  //全ての処理が抜けた後、disconnectする※重要※
-  // try {
-  //   await disconnectDB();
-  // } catch (error) {
-  //   res.status(500).send({ message: "データベースの切断に失敗しました。" });
-  // }
 }
 
 export default handler;

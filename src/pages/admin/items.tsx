@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Container } from "@material-ui/core";
-import { useAppSelector } from "../../store/app/hooks";
-import { selectItems } from "../../store/features/item/itemsSlice";
+import { useAppSelector } from "../../app/hooks";
+import { selectItems } from "../../features/item/itemsSlice";
 import {
   AdminItemsForm,
   AdminItemsTable,

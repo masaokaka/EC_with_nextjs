@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { Container } from "@material-ui/core";
-import { useAppSelector } from "../../store/app/hooks";
-import { selectToppings } from "../../store/features/topping/toppingsSlice";
+import { useAppSelector } from "../../app/hooks";
+import { selectToppings } from "../../features/topping/toppingsSlice";
 import {
   AdminToppingsForm,
   AdminToppingsTable,

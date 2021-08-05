@@ -1,21 +1,21 @@
 import { useEffect, useState, FC } from "react";
 import { useRouter, NextRouter } from "next/router";
 import { Container } from "@material-ui/core";
-import { useAppSelector, useAppDispatch } from "../../../store/app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import { Btn } from "../../../components/atoms";
 import {
   OrderItemsTable,
   AdminHeaderBtns,
 } from "../../../components/organisms";
-import { UserInfoType } from "../../../store/features/userinfo/userinfoSlice";
-import { selectUserInfos } from "../../../store/features/userinfos/userinfosSlice";
+import { UserInfoType } from "../../../features/userinfo/userinfoSlice";
+import { selectUserInfos } from "../../../features/userinfos/userinfosSlice";
 import {
   selectOrders,
   unsetOrders,
   fetchOrdersAsync,
-} from "../../../store/features/order/ordersSlice";
-import { selectItems } from "../../../store/features/item/itemsSlice";
-import { selectToppings } from "../../../store/features/topping/toppingsSlice";
+} from "../../../features/order/ordersSlice";
+import { selectItems } from "../../../features/item/itemsSlice";
+import { selectToppings } from "../../../features/topping/toppingsSlice";
 
 const UserEdit: FC = () => {
   const router: NextRouter = useRouter();

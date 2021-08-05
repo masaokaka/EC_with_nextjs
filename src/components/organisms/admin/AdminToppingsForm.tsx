@@ -5,7 +5,7 @@ import { useForm, SubmitHandler } from "react-hook-form";
 import {
   ToppingType,
   addToppingAsync,
-} from "../../../store/features/topping/toppingsSlice";
+} from "../../../features/topping/toppingsSlice";
 import { Btn, TextFieldHookForm } from "../../atoms";
 import {
   SIZE_L_PRICE,

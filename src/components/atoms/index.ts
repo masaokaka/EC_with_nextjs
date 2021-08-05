@@ -6,6 +6,7 @@ export { default as Price } from "./Price";
 export { default as LoadingPage } from "./LoadingPage";
 export { default as ErrorMessage } from "./ErrorMessage";
 export { default as RadioInput } from "./RadioInput";
+export { default as Notification } from "./Notification";
 
 //HookFormフォーム系
 export { default as CalenderInputHookForm } from "./CalenderInputHookForm";

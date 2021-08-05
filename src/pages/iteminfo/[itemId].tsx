@@ -1,12 +1,12 @@
 import { useRouter } from "next/router";
 import { useState, FC, useMemo, useEffect, Fragment } from "react";
 import { useDispatch } from "react-redux";
-import { ItemType, selectItems } from "../../store/features/item/itemsSlice";
+import { ItemType, selectItems } from "../../features/item/itemsSlice";
 import {
   selectToppings,
   ToppingType,
-} from "../../store/features/topping/toppingsSlice";
-import { useAppSelector } from "../../store/app/hooks";
+} from "../../features/topping/toppingsSlice";
+import { useAppSelector } from "../../app/hooks";
 import { Container, Grid } from "@material-ui/core";
 import {
   ItemDetail,
@@ -15,7 +15,7 @@ import {
 } from "../../components/molecules";
 import { Btn, Price, RadioInput } from "../../components/atoms";
 import { createRandomId, calcTotal } from "../../helpers/functions";
-import { selectUid } from "../../store/features/userinfo/userinfoSlice";
+import { selectUid } from "../../features/userinfo/userinfoSlice";
 import {
   SIZE_M_STATUS,
   SIZE_NONE_STATUS,
@@ -29,7 +29,7 @@ import {
   addItemToCartAsync,
   createCartAsync,
   CartTopType,
-} from "../../store/features/cart/cartSlice";
+} from "../../features/cart/cartSlice";
 import Topping from "../../models/topping";
 import Item from "../../models/item";
 import connectDB from "../../config/mongoDB";
@@ -136,7 +136,9 @@ const ItemInfo: FC<Props> = (props) => {
   return (
     <Fragment>
       <Head>
-        <title>ラクラクカリー【{item.name}】</title>
+        <title>
+          ラクラクカリー : {item.name} {item.text}
+        </title>
         <meta name="description" content={item.text} />
       </Head>
       <Container>

@@ -6,7 +6,7 @@ import CardMedia from "@material-ui/core/CardMedia";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import { createStyles, makeStyles, Theme } from "@material-ui/core/styles";
-import { ItemType } from "../../store/features/item/itemsSlice";
+import { ItemType } from "../../features/item/itemsSlice";
 import { Price } from "../atoms";
 import { useRouter } from "next/router";
 

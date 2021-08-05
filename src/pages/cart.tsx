@@ -1,17 +1,17 @@
 import { useEffect, useState, FC } from "react";
 import { useRouter } from "next/router";
 import { Container, Box } from "@material-ui/core";
-import { useAppSelector } from "../store/app/hooks";
+import { useAppSelector } from "../app/hooks";
 import { Btn, Price } from "../components/atoms";
 import { CartItemsTable, OrderForm } from "../components/organisms";
 import { calcTotal } from "../helpers/functions";
 import {
   selectUid,
   selectUserInfo,
-} from "../store/features/userinfo/userinfoSlice";
-import { selectItems } from "../store/features/item/itemsSlice";
-import { selectToppings } from "../store/features/topping/toppingsSlice";
-import { selectCart } from "../store/features/cart/cartSlice";
+} from "../features/userinfo/userinfoSlice";
+import { selectItems } from "../features/item/itemsSlice";
+import { selectToppings } from "../features/topping/toppingsSlice";
+import { selectCart } from "../features/cart/cartSlice";
 
 export const Cart: FC = () => {
   const router = useRouter();

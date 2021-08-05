@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import Topping from "../../../models/topping";
 // import { connectDB, disconnectDB } from "../../../helpers/db_utils";
 import connectDB from "../../../config/mongoDB";
-import { ToppingType } from "../../../store/features/topping/toppingsSlice";
+import { ToppingType } from "../../../features/topping/toppingsSlice";
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
   const params: string | string[] = req.query.params;
@@ -63,13 +63,6 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
       }
     }
   }
-
-  //全ての処理が抜けた後、disconnectする※重要※
-  // try {
-  //   await disconnectDB();
-  // } catch (error) {
-  //   res.status(500).send({ message: "データベースの切断に失敗しました。" });
-  // }
 }
 
 export default handler;

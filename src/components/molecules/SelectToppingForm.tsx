@@ -1,8 +1,8 @@
 import { Select, InputLabel, FormControl, MenuItem } from "@material-ui/core";
-import { ToppingType } from "../../store/features/topping/toppingsSlice";
+import { ToppingType } from "../../features/topping/toppingsSlice";
 import { makeStyles } from "@material-ui/core";
 import { useState, useEffect, FC } from "react";
-import { CartTopType } from "../../store/features/cart/cartSlice";
+import { CartTopType } from "../../features/cart/cartSlice";
 
 interface Props {
   topping: ToppingType;

@@ -1,7 +1,7 @@
 import { Item } from "./";
 import { FC } from "react";
 import Box from "@material-ui/core/Box";
-import { ItemType } from "../../store/features/item/itemsSlice";
+import { ItemType } from "../../features/item/itemsSlice";
 
 interface Props {
   items: ItemType[];

@@ -1,16 +1,16 @@
 import { FC, useEffect } from "react";
 import { Container } from "@material-ui/core";
-import { useAppSelector, useAppDispatch } from "../../../store/app/hooks";
+import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import {
   selectUserInfos,
   getAllUsersAsync,
-} from "../../../store/features/userinfos/userinfosSlice";
+} from "../../../features/userinfos/userinfosSlice";
 import {
   AdminUsersTable,
   AdminHeaderBtns,
 } from "../../../components/organisms";
 import { ADMIN_ID } from "../../../static/admin";
-import { selectUid } from "../../../store/features/userinfo/userinfoSlice";
+import { selectUid } from "../../../features/userinfo/userinfoSlice";
 
 const Users: FC = () => {
   const dispatch = useAppDispatch();

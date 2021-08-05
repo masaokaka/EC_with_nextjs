@@ -1,8 +1,8 @@
 import { Container, Box } from "@material-ui/core";
 import { useState, FC } from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { useAppDispatch } from "../../../store/app/hooks";
-import { addItemAsync, ItemType } from "../../../store/features/item/itemsSlice";
+import { useAppDispatch } from "../../../app/hooks";
+import { addItemAsync, ItemType } from "../../../features/item/itemsSlice";
 import {
   Btn,
   ImgInputHookForm,

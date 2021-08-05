@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { Table, TableBody, TableContainer, Paper } from "@material-ui/core";
-import { OrderType } from "../../store/features/order/ordersSlice";
-import { ItemType } from "../../store/features/item/itemsSlice";
-import { ToppingType } from "../../store/features/topping/toppingsSlice";
+import { OrderType } from "../../features/order/ordersSlice";
+import { ItemType } from "../../features/item/itemsSlice";
+import { ToppingType } from "../../features/topping/toppingsSlice";
 import { ItemsTableHead, OrderItemsTableRow } from "../molecules";
 interface Props {
   items: ItemType[];

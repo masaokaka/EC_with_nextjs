@@ -1,8 +1,8 @@
 import { FC } from "react";
 import { FormLabel } from "@material-ui/core";
 import { SelectToppingForm } from ".";
-import { CartTopType } from "../../store/features/cart/cartSlice";
-import { ToppingType } from "../../store/features/topping/toppingsSlice";
+import { CartTopType } from "../../features/cart/cartSlice";
+import { ToppingType } from "../../features/topping/toppingsSlice";
 
 interface Props {
   toppings: ToppingType[];

@@ -1,12 +1,12 @@
-import { useAppSelector, useAppDispatch } from "../store/app/hooks";
+import { useAppSelector, useAppDispatch } from "../app/hooks";
 import { FC, useEffect } from "react";
 import { OrderItemsTable } from "../components/organisms";
 import { Container } from "@material-ui/core";
-import { selectOrders } from "../store/features/order/ordersSlice";
-import { selectUid } from "../store/features/userinfo/userinfoSlice";
-import { selectItems } from "../store/features/item/itemsSlice";
-import { selectToppings } from "../store/features/topping/toppingsSlice";
-import { fetchOrdersAsync } from "../store/features/order/ordersSlice";
+import { selectOrders } from "../features/order/ordersSlice";
+import { selectUid } from "../features/userinfo/userinfoSlice";
+import { selectItems } from "../features/item/itemsSlice";
+import { selectToppings } from "../features/topping/toppingsSlice";
+import { fetchOrdersAsync } from "../features/order/ordersSlice";
 import { useRouter } from "next/router";
 
 const OrderHistory: FC = () => {

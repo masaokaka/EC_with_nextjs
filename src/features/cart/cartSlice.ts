@@ -49,6 +49,7 @@ export const fetchCartAsync = createAsyncThunk<
 >("cart/fetch", async ({ uid }, { rejectWithValue }) => {
   try {
     const cart = await fetch_cart(uid);
+    console.log(cart);
     return cart;
   } catch (e) {
     return rejectWithValue({ errorMsg: e.message });

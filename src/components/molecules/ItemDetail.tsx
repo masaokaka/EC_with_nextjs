@@ -1,4 +1,4 @@
-import { ItemType } from "../../store/features/item/itemsSlice";
+import { ItemType } from "../../features/item/itemsSlice";
 import { Grid } from "@material-ui/core";
 import { makeStyles, Theme, createStyles } from "@material-ui/core";
 import { FC } from "react";

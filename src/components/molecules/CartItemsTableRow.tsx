@@ -5,9 +5,9 @@ import {
   CartType,
   setCart,
   deleteItemFromCartAsync,
-} from "../../store/features/cart/cartSlice";
-import { ToppingType } from "../../store/features/topping/toppingsSlice";
-import { ItemType } from "../../store/features/item/itemsSlice";
+} from "../../features/cart/cartSlice";
+import { ToppingType } from "../../features/topping/toppingsSlice";
+import { ItemType } from "../../features/item/itemsSlice";
 import { useDispatch } from "react-redux";
 import { Btn, Price } from "../atoms";
 import { ToppingsTableCell } from ".";

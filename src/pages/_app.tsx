@@ -3,7 +3,7 @@ import type { AppProps } from "next/app";
 import { Layout } from "../components/organisms";
 import Head from "next/head";
 import { Provider } from "react-redux";
-import { store } from "../store/app/store";
+import { store } from "../app/store";
 import { ThemeProvider } from "@material-ui/core/styles";
 import theme from "../styles/theme";
 

@@ -1,5 +1,5 @@
 import { useEffect, FC } from "react";
-import { useAppSelector } from "../store/app/hooks";
+import { useAppSelector } from "../app/hooks";
 import { useDispatch } from "react-redux";
 import { useRouter } from "next/router";
 import {
@@ -9,7 +9,7 @@ import {
   selectUserInfoErrorMsg,
   selectUserInfoStatus,
   unsetUserError,
-} from "../store/features/userinfo/userinfoSlice";
+} from "../features/userinfo/userinfoSlice";
 import { Container, Box } from "@material-ui/core";
 import {
   Btn,

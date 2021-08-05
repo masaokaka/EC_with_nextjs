@@ -9,14 +9,14 @@ import {
   TextFieldHookForm,
 } from "../atoms";
 import { useDispatch } from "react-redux";
-import { UserInfoType } from "../../store/features/userinfo/userinfoSlice";
+import { UserInfoType } from "../../features/userinfo/userinfoSlice";
 import {
   OrderInfoType,
   OrderType,
   orderAsync,
-} from "../../store/features/order/ordersSlice";
+} from "../../features/order/ordersSlice";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { CartType } from "../../store/features/cart/cartSlice";
+import { CartType } from "../../features/cart/cartSlice";
 import {
   ORDER_STATUS_PAID,
   ORDER_STATUS_UNPAID,
@@ -96,7 +96,7 @@ const OrderForm: FC<Props> = ({ cart, userInfo, totalPrice }) => {
     };
     dispatch(orderAsync({ order: new_order }));
     localStorage.setItem("token-order-complete", ORDER_COMP_TOKEN);
-    router.push("/ordercomp");
+    router.push("/ordercomplete");
   };
   return (
     <Container maxWidth="sm">

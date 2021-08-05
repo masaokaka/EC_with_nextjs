@@ -9,7 +9,7 @@ import {
 import { ItemsTableHead } from "../../molecules";
 import { IconBtn } from "../../atoms";
 import { useRouter } from "next/router";
-import { UserInfoType } from "../../../store/features/userinfo/userinfoSlice";
+import { UserInfoType } from "../../../features/userinfo/userinfoSlice";
 
 interface Props {
   userInfos: UserInfoType[];

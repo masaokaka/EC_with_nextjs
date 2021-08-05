@@ -4,12 +4,12 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Grid from "@material-ui/core/Grid";
 import { IconBtn, Logo } from "../atoms";
 import { HeadIconBtns } from "../molecules";
-import { toggle } from "../../store/features/sidenavSlice";
-import { useAppSelector, useAppDispatch } from "../../store/app/hooks";
+import { toggle } from "../../features/sidenavSlice";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
 import {
   selectUserInfo,
   selectUid,
-} from "../../store/features/userinfo/userinfoSlice";
+} from "../../features/userinfo/userinfoSlice";
 import { FC } from "react";
 // import MediaQuery from "react-responsive";
 

@@ -1,5 +1,5 @@
 import { ToppingType } from "./toppingsSlice";
-import { TOPPINGS_COLLECTION_PATH } from "../../../config/mongoDB/config";
+import { TOPPINGS_COLLECTION_PATH } from "../../config/mongoDB/config";
 import axios, { AxiosResponse, AxiosError } from "axios";
 
 //トッピングの取得

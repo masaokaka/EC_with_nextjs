@@ -1,5 +1,5 @@
 import axios, { AxiosResponse, AxiosError } from "axios";
-import { USERINFOS_COLLECTION_PATH } from "../../../config/mongoDB/config";
+import { USERINFOS_COLLECTION_PATH } from "../../config/mongoDB/config";
 import { UserInfoType } from "../userinfo/userinfoSlice";
 
 //ユーザー情報取得

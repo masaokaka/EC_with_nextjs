@@ -33,6 +33,7 @@ class MyDocument extends Document {
     );
   }
 
+  //マテリアルUIを正しく動かすために必要
   static async getInitialProps(
     ctx: DocumentContext
   ): Promise<DocumentInitialProps> {

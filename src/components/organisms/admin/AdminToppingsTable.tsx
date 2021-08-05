@@ -10,7 +10,7 @@ import {
 import {
   ToppingType,
   deleteToppingAsync,
-} from "../../../store/features/topping/toppingsSlice";
+} from "../../../features/topping/toppingsSlice";
 import { ItemsTableHead } from "../../molecules";
 import { Btn, Price } from "../../atoms";
 

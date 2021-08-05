@@ -1,5 +1,5 @@
 import { useEffect, FC } from "react";
-import { useAppDispatch, useAppSelector } from "../store/app/hooks";
+import { useAppDispatch, useAppSelector } from "../app/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Container, Box } from "@material-ui/core";
@@ -9,7 +9,7 @@ import {
   selectUserInfoErrorMsg,
   selectUserInfoStatus,
   unsetUserError,
-} from "../store/features/userinfo/userinfoSlice";
+} from "../features/userinfo/userinfoSlice";
 import { Btn, ErrorMessage, TextFieldHookForm } from "../components/atoms";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {

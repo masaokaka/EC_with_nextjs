@@ -1,5 +1,5 @@
-import { ItemType } from "../store/features/item/itemsSlice";
-import { CartTopType } from "../store/features/cart/cartSlice";
+import { ItemType } from "../features/item/itemsSlice";
+import { CartTopType } from "../features/cart/cartSlice";
 import axios from "axios";
 import {
   SIZE_M_STATUS,

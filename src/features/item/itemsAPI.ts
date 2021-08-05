@@ -1,5 +1,5 @@
 import { ItemType } from "./itemsSlice";
-import { ITEMS_COLLECTION_PATH } from "../../../config/mongoDB/config";
+import { ITEMS_COLLECTION_PATH } from "../../config/mongoDB/config";
 import axios, { AxiosError, AxiosResponse } from "axios";
 
 //アイテムの取得

@@ -13,11 +13,11 @@ import HistoryIcon from "@material-ui/icons/History";
 import AdminIcon from "@material-ui/icons/SupervisorAccount";
 import MeetingRoomOutlined from "@material-ui/icons/MeetingRoomOutlined";
 import MeetingRoom from "@material-ui/icons/MeetingRoom";
-import { selectSidenav, toggle } from "../../store/features/sidenavSlice";
-import { useAppSelector, useAppDispatch } from "../../store/app/hooks";
-import { selectUid } from "../../store/features/userinfo/userinfoSlice";
+import { selectSidenav, toggle } from "../../features/sidenavSlice";
+import { useAppSelector, useAppDispatch } from "../../app/hooks";
+import { selectUid } from "../../features/userinfo/userinfoSlice";
 import { ADMIN_ID } from "../../static/admin";
-import { logout_from_firebase } from "../../store/features/userinfo/userinfoAPI";
+import { logout_from_firebase } from "../../features/userinfo/userinfoAPI";
 
 const useStyles = makeStyles({
   list: {

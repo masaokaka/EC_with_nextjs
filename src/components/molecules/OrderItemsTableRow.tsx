@@ -7,9 +7,9 @@ import { ItemsTableHead, CartItemsTableRow } from "./";
 import {
   OrderType,
   updateOrderStatusAsync,
-} from "../../store/features/order/ordersSlice";
-import { ItemType } from "../../store/features/item/itemsSlice";
-import { ToppingType } from "../../store/features/topping/toppingsSlice";
+} from "../../features/order/ordersSlice";
+import { ItemType } from "../../features/item/itemsSlice";
+import { ToppingType } from "../../features/topping/toppingsSlice";
 import {
   ORDER_STATUS_UNPAID,
   ORDER_STATUS_PAID,

@@ -7,7 +7,7 @@ import {
   TableRow,
   TableCell,
 } from "@material-ui/core";
-import { ItemType, deleteItemAsync } from "../../../store/features/item/itemsSlice";
+import { ItemType, deleteItemAsync } from "../../../features/item/itemsSlice";
 import { ItemsTableHead } from "../../molecules";
 import { Btn, Price } from "../../atoms";
 
