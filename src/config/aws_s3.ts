@@ -6,8 +6,8 @@ const randomBytes = promisify(crypto.randomBytes);
 
 const region = "ap-northeast-1";
 const bucketName = process.env.AWS_S3_BUCKET_NAME;
-const accessKeyId = process.env.AWS_ACCESS_KEY_ID;
-const secretAccessKey = process.env.AWS_SECRET_ACCESS_KEY;
+const accessKeyId = process.env.AWS_ACCESSKEY_ID;
+const secretAccessKey = process.env.AWS_SECRETACCESS_KEY;
 
 const s3 = new AWS.S3({
   region,
