@@ -19,7 +19,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   header: {
     position: "absolute",
-    bottom: "0",
     width: "100%",
     left: "0",
   },
@@ -57,20 +56,6 @@ const Header: FC = () => {
             <Grid item>
               <HeadIconBtns uid={uid} />
             </Grid>
-            {/* 画面幅600px以下の場合 */}
-            {/* <div className={classes.grow} />
-              {userInfo && (
-                <Grid item style={{ fontSize: "13px" }}>
-                  {userInfo.username && <div>{userInfo.username}</div>}
-                </Grid>
-              )}
-              <div className={classes.grow} />
-              <Grid item>
-                <IconBtn
-                  icon={"Menu"}
-                  onClick={() => dispatch(toggle(true))}
-                ></IconBtn>
-              </Grid> */}
           </Grid>
         </Toolbar>
       </AppBar>

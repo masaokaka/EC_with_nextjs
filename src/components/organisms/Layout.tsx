@@ -21,6 +21,7 @@ import {
   unsetCart,
   fetchCartAsync,
   selectCartStatus,
+  selectCartErrorMsg,
 } from "../../features/cart/cartSlice";
 import {
   unsetOrders,
@@ -32,6 +33,7 @@ import {
   selectUserInfosStatus,
   unsetUserInfos,
 } from "../../features/userinfos/userinfosSlice";
+import useScroll from "../../hooks/scrolltotop";
 
 const Layout: FC = (props) => {
   const dispatch = useAppDispatch();
@@ -42,8 +44,6 @@ const Layout: FC = (props) => {
   const userinfosStatus = useAppSelector(selectUserInfosStatus);
   const cartStatus = useAppSelector(selectCartStatus);
 
-  //同じタイミングでmongoDBのセッションにアクセスするとエラーが出る。未解決
-  //Layoutで全てのコンポーネントをラップするので、ここでデータの取得はやってしまう。
   useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
@@ -66,8 +66,6 @@ const Layout: FC = (props) => {
     <Fragment>
       <Header />
       <Sidenav />
-      {/* エラーメッセージのコンポーネント */}
-      <Notification message="aaa" status="failed" />
       <main>
         <Inner>{props.children}</Inner>
       </main>

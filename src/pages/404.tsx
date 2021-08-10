@@ -1,8 +1,8 @@
-import { FC } from "react";
+import { NextPage } from "next";
 import { Btn } from "../components/atoms";
 import { useRouter } from "next/router";
 
-const NotFoundPage: FC = () => {
+const NotFoundPage: NextPage = () => {
   const router = useRouter();
   return (
     <div className="center">

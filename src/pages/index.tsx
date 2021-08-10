@@ -1,24 +1,24 @@
 import Head from "next/head";
-import Image from "next/image";
-import { FC, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { Box } from "@material-ui/core";
 import { useAppSelector } from "../app/hooks";
 import { Items, SearchForm } from "../components/molecules";
 import { selectItems, ItemType } from "../features/item/itemsSlice";
 import { fetch_all_items } from "../features/item/itemsAPI";
 import Item from "../models/item";
-// import { connectDB, disconnectDB } from "../helpers/db_utils";
 import connectDB from "../config/mongoDB";
-import { GetStaticProps,NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { ONE_MINUTE } from "../static/const";
 
 interface Props {
   items: string;
 }
+
 const Home: NextPage<Props> = (props) => {
   const items: ItemType[] = JSON.parse(props.items);
   const [searchItems, setSearchItems] = useState<ItemType[]>(items);
   const [noItem, setNoItem] = useState(false);
+
   const search = (word: string | undefined) => {
     if (word === "" || word === undefined) {
       setSearchItems(items);
@@ -35,8 +35,9 @@ const Home: NextPage<Props> = (props) => {
       }
     }
   };
+  
   return (
-    <div className="center">
+    <Box className="center">
       <Head>
         <title>
           ラクラクカリー | ラクラク社シェフのカレーをすぐにお届け！ | raku raku
@@ -54,7 +55,7 @@ const Home: NextPage<Props> = (props) => {
       <Box>
         <Items items={searchItems} noItem={noItem} />
       </Box>
-    </div>
+    </Box>
   );
 };
 
@@ -64,7 +65,6 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
     console.log("toppage build");
     await connectDB();
     items = await Item.find({});
-    // await disconnectDB();
   } catch (error) {
     console.log(error.message);
   }

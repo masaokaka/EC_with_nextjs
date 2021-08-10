@@ -33,7 +33,12 @@ import {
 import Topping from "../../models/topping";
 import Item from "../../models/item";
 import connectDB from "../../config/mongoDB";
-import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from "next";
+import {
+  GetStaticPaths,
+  GetStaticProps,
+  GetStaticPropsContext,
+  NextPage,
+} from "next";
 import { ONE_MINUTE } from "../../static/const";
 import Head from "next/head";
 
@@ -42,7 +47,7 @@ interface Props {
   toppings: string; //トッピング配列
 }
 
-const ItemInfo: FC<Props> = (props) => {
+const ItemInfo: NextPage<Props> = (props) => {
   const item: ItemType = JSON.parse(props.item);
   const toppings: ToppingType[] = JSON.parse(props.toppings);
   const dispatch = useDispatch();

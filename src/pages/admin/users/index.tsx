@@ -1,4 +1,4 @@
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { Container } from "@material-ui/core";
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
 import {
@@ -11,14 +11,17 @@ import {
 } from "../../../components/organisms";
 import { ADMIN_ID } from "../../../static/admin";
 import { selectUid } from "../../../features/userinfo/userinfoSlice";
+import { NextPage } from "next";
 
-const Users: FC = () => {
+const Users: NextPage = () => {
   const dispatch = useAppDispatch();
   const userInfos = useAppSelector(selectUserInfos);
   const uid = useAppSelector(selectUid);
+
   useEffect(() => {
     if (uid === ADMIN_ID) dispatch(getAllUsersAsync());
-  }, [dispatch, ADMIN_ID, uid]);
+  }, [dispatch, uid]);
+
   return (
     <Container>
       <AdminHeaderBtns />

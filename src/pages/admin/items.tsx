@@ -1,4 +1,3 @@
-import { FC } from "react";
 import { Container } from "@material-ui/core";
 import { useAppSelector } from "../../app/hooks";
 import { selectItems } from "../../features/item/itemsSlice";
@@ -7,8 +6,9 @@ import {
   AdminItemsTable,
   AdminHeaderBtns,
 } from "../../components/organisms";
+import { NextPage } from "next";
 
-const Items: FC = () => {
+const Items: NextPage = () => {
   const items = useAppSelector(selectItems);
   return (
     <Container>

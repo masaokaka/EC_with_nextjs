@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { NextPage } from "next";
 import { Container } from "@material-ui/core";
 import { useAppSelector } from "../../app/hooks";
 import { selectToppings } from "../../features/topping/toppingsSlice";
@@ -8,7 +8,7 @@ import {
   AdminHeaderBtns,
 } from "../../components/organisms";
 
-const Toppings: FC = () => {
+const Toppings: NextPage = () => {
   const toppings = useAppSelector(selectToppings);
   return (
     <Container>

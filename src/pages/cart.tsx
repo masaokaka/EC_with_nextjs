@@ -1,19 +1,17 @@
-import { useEffect, useState, FC } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { Container, Box } from "@material-ui/core";
 import { useAppSelector } from "../app/hooks";
 import { Btn, Price } from "../components/atoms";
 import { CartItemsTable, OrderForm } from "../components/organisms";
 import { calcTotal } from "../helpers/functions";
-import {
-  selectUid,
-  selectUserInfo,
-} from "../features/userinfo/userinfoSlice";
+import { selectUid, selectUserInfo } from "../features/userinfo/userinfoSlice";
 import { selectItems } from "../features/item/itemsSlice";
 import { selectToppings } from "../features/topping/toppingsSlice";
 import { selectCart } from "../features/cart/cartSlice";
+import { NextPage } from "next";
 
-export const Cart: FC = () => {
+export const Cart: NextPage = () => {
   const router = useRouter();
   const [show, setShow] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);

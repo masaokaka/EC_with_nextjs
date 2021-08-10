@@ -1,5 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import classes from "../../styles/atoms/Notification.module.css";
+import IconBtn from "./IconBtn";
 
 interface Props {
   message: string;
@@ -8,7 +9,7 @@ interface Props {
 const Notification: FC<Props> = ({ message, status }) => {
   let title: string = "";
   let statusClasses: string = "";
-  const [activeNotification, setActiveNotification] = useState(false);
+  const [activeNotification, setActiveNotification] = useState(true);
   if (status === "idle") {
     title = "成功";
     statusClasses = classes.success;
@@ -30,12 +31,12 @@ const Notification: FC<Props> = ({ message, status }) => {
         clearTimeout(timer);
       };
     }
-  }, [activeNotification]);
+  }, [activeNotification, status]);
   return (
     <>
       {activeNotification && (
         <div className={activeClasses}>
-          <button onClick={() => setActiveNotification(false)}>消す</button>
+          <IconBtn icon="Clear" onClick={() => setActiveNotification(false)}>消す</IconBtn>
           <h2>{title}</h2>
           <p>{message}</p>
         </div>

@@ -9,6 +9,7 @@ import MeetingRoomOutlinedIcon from "@material-ui/icons/MeetingRoomOutlined";
 import SearchIcon from "@material-ui/icons/Search";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import EditIcon from "@material-ui/icons/Edit";
+import HighlightOffOutlinedIcon from "@material-ui/icons/HighlightOffOutlined";
 
 interface Props {
   icon:
@@ -20,7 +21,8 @@ interface Props {
     | "Logout"
     | "Search"
     | "Arrow"
-    | "Edit";
+    | "Edit"
+    | "Clear";
   onClick: (e?: any) => void;
 }
 
@@ -36,6 +38,7 @@ const IconBtn: FC<Props> = ({ icon, onClick }) => {
       {icon === "Search" && <SearchIcon />}
       {icon === "Arrow" && <ArrowBackIcon />}
       {icon === "Edit" && <EditIcon />}
+      {icon === "Clear" && <HighlightOffOutlinedIcon />}
     </IconButton>
   );
 };

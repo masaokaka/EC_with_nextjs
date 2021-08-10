@@ -7,7 +7,7 @@ export interface State {
 
 const useScroll = (ref: RefObject<HTMLElement>) => {
   // 座標初期位置を記録。
-  const [state, setState] = useState<State>({
+  const [scroll, setScroll] = useState<State>({
     x: 0,
     y: 0,
   });
@@ -15,7 +15,7 @@ const useScroll = (ref: RefObject<HTMLElement>) => {
   useEffect(() => {
     const handler = () => {
       if (ref.current) {
-        setState({
+        setScroll({
           x: ref.current.scrollLeft,
           y: ref.current.scrollTop,
         });
@@ -38,7 +38,7 @@ const useScroll = (ref: RefObject<HTMLElement>) => {
     };
   }, [ref]);
 
-  return state;
+  return scroll;
 };
 
 export default useScroll;

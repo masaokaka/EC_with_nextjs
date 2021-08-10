@@ -1,4 +1,5 @@
-import { useEffect, useState, FC } from "react";
+import { NextPage } from "next";
+import { useEffect, useState } from "react";
 import { useRouter, NextRouter } from "next/router";
 import { Container } from "@material-ui/core";
 import { useAppSelector, useAppDispatch } from "../../../app/hooks";
@@ -17,7 +18,7 @@ import {
 import { selectItems } from "../../../features/item/itemsSlice";
 import { selectToppings } from "../../../features/topping/toppingsSlice";
 
-const UserEdit: FC = () => {
+const UserEdit: NextPage = () => {
   const router: NextRouter = useRouter();
   const [uid, setUid] = useState<string>("");
   useEffect(() => {

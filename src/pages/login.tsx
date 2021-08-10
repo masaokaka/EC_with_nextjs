@@ -1,4 +1,5 @@
-import { useEffect, FC } from "react";
+import { useEffect } from "react";
+import { NextPage } from "next";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import Link from "next/link";
 import { useRouter } from "next/router";
@@ -10,7 +11,7 @@ import {
   selectUserInfoStatus,
   unsetUserError,
 } from "../features/userinfo/userinfoSlice";
-import { Btn, ErrorMessage, TextFieldHookForm } from "../components/atoms";
+import { Btn, TextFieldHookForm } from "../components/atoms";
 import { useForm, SubmitHandler } from "react-hook-form";
 import {
   EMAIL_WITHOUT_WHITESPACE_REGEX,
@@ -24,12 +25,10 @@ interface LoginInfoType {
   password?: string;
 }
 
-const Login: FC = () => {
+const Login: NextPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const uid = useAppSelector(selectUid);
-  const userinfoError = useAppSelector(selectUserInfoErrorMsg);
-  const userinfoStatus = useAppSelector(selectUserInfoStatus);
   const {
     control,
     handleSubmit,
@@ -61,9 +60,6 @@ const Login: FC = () => {
     <Container maxWidth="sm">
       <Box mt={3} textAlign="center">
         <h2>ログイン</h2>
-        {userinfoStatus === "failed" && userinfoError !== null && (
-          <ErrorMessage msg={userinfoError} />
-        )}
         <form onSubmit={handleSubmit(doLogin)}>
           <TextFieldHookForm
             formName="email"

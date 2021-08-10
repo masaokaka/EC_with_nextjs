@@ -1,16 +1,15 @@
 .notification {
+  margin-top: 20px;
   position: fixed;
-  top: 15%;
-  left: 0;
-  height: 3rem;
-  width: 80%;
-  background-color: #1b1b1b;
+  top: 70px;
+  height: 30px;
+  width: 50%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
   color: white;
   padding: 0.5rem 10%;
-  box-shadow: 0 -3px 6px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  border-radius: 10px;
 }
 
 .notification h2 {

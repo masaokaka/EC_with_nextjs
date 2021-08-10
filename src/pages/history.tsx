@@ -1,5 +1,5 @@
 import { useAppSelector, useAppDispatch } from "../app/hooks";
-import { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { OrderItemsTable } from "../components/organisms";
 import { Container } from "@material-ui/core";
 import { selectOrders } from "../features/order/ordersSlice";
@@ -8,8 +8,9 @@ import { selectItems } from "../features/item/itemsSlice";
 import { selectToppings } from "../features/topping/toppingsSlice";
 import { fetchOrdersAsync } from "../features/order/ordersSlice";
 import { useRouter } from "next/router";
+import { NextPage } from "next";
 
-const OrderHistory: FC = () => {
+const OrderHistory: NextPage = () => {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const uid = useAppSelector(selectUid);
