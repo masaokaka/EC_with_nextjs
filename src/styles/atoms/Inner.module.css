@@ -1,0 +1,12 @@
+.wrapper {
+  padding: 20px;
+  margin-top: 120px;
+  margin-bottom: 120px;
+  width: 100%;
+}
+.paper {
+  border-color: orange;
+  padding: 20px;
+  border-width: 10px;
+  background-color: antiquewhite;
+}

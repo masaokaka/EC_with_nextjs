@@ -1,0 +1,31 @@
+.notification {
+  margin-top: 20px;
+  position: fixed;
+  top: 70px;
+  height: 30px;
+  width: 50%;
+  display: flex;
+  align-items: center;
+  color: white;
+  padding: 0.5rem 10%;
+  z-index: 1;
+  border-radius: 10px;
+}
+
+.notification h2 {
+  margin: 0;
+  font-size: 1.25rem;
+  color: white;
+}
+
+.loading {
+  background-color: #177cbe;
+}
+
+.success {
+  background-color: #10be58;
+}
+
+.failed {
+  background-color: #e65035;
+}
